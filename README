@@ -1,0 +1,16 @@
+Random Courage Wolf
+=======================================
+
+Random Courage Wolf is a tiny web application that displays a random courage
+wolf from quickmeme.
+
+Demo: http://rcw.ian-preston.com/
+
+Requirements:
+    Python 2.6+
+    Flask
+    python-memcached and a local Memcached server
+    BeautifulSoup
+
+Run a local version:
+    $ python webapp.py
