@@ -27,7 +27,7 @@ def index():
         soup = BeautifulSoup.BeautifulSoup(page_html)
 
         # Find all links to courage wolves in the page
-        links = soup.findAll('a', href=re.compile('^/meme'))
+        links = soup.findAll('a', href=re.compile('^http://www.quickmeme.com/meme/'))
 
         # Pick the second link from that page, as the first is not a courage wolf
         # for some reason.
