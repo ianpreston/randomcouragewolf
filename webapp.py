@@ -24,6 +24,12 @@ def index():
         page_url = 'http://quickmeme.com/Courage-Wolf/random/?num={0}' \
                     .format(page_num)
         page_html = urllib2.urlopen(page_url).read()
+        
+        # Quickmeme doesn't know how quotes work
+        page_html_lines = page_html.split('\n')
+        page_html_lines[103] = page_html_lines[103].replace('"">', '">')
+        page_html = '\n'.join(page_html_lines)
+
         soup = BeautifulSoup.BeautifulSoup(page_html)
 
         # Find all links to courage wolves in the page
