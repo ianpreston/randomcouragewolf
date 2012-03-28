@@ -15,13 +15,13 @@ def before_request():
 @app.route('/')
 def index():
     # Pick a random page number from quickmeme
-    page_num = random.randint(1, 86)
+    page_num = random.randint(1, 450)
 
     cache_key = 'rcw_' + str(page_num)
 
     if g.memcache_client.get(cache_key) == None:
         # Get the page from quickmeme
-        page_url = 'http://quickmeme.com/Courage-Wolf/random/?num={0}' \
+        page_url = 'http://www.quickmeme.com/Courage-Wolf/popular/{0}/?upcoming' \
                     .format(page_num)
         page_html = urllib2.urlopen(page_url).read()
         
@@ -33,7 +33,7 @@ def index():
         soup = BeautifulSoup.BeautifulSoup(page_html)
 
         # Find all links to courage wolves in the page
-        links = soup.findAll('a', href=re.compile('^http://www.quickmeme.com/meme/'))
+        links = soup.findAll('a', href=re.compile('^/meme/'))
 
         # Pick the second link from that page, as the first is not a courage wolf
         # for some reason.
